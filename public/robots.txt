@@ -1,0 +1,14 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Allow GPTBot for GEO (Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+# Allow Google AI
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap
+Sitemap: https://domizan.com/sitemap.xml

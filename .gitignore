@@ -1,0 +1,221 @@
+# ===============================================
+# DOMIZAN PROJECT - MASTER .GITIGNORE
+# ===============================================
+
+# ==================== OS FILES ====================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+*.dmg
+
+# Linux
+*~
+.fuse_hidden*
+.nfs*
+
+# ==================== IDE & EDITORS ====================
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# JetBrains (IntelliJ, WebStorm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+cmake-build-*/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ==================== LOGS ====================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ==================== ENVIRONMENT & SECRETS ====================
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+.env.*.local
+*.env
+
+# Secrets
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+credentials.json
+service-account.json
+
+# ==================== BACKEND (Spring Boot / Java) ====================
+backend/target/
+backend/*.jar
+backend/*.war
+backend/*.ear
+backend/logs/
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/HELP.md
+
+# H2 Database
+*.mv.db
+*.trace.db
+*.db
+
+# ==================== FRONTEND (Node.js / React / Next.js) ====================
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Builds
+build/
+dist/
+out/
+.output/
+.nuxt/
+.next/
+.cache/
+.parcel-cache/
+.turbo/
+
+# Testing
+coverage/
+*.lcov
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Vite
+*.local
+
+# ==================== ELECTRON DESKTOP APP ====================
+desktop-app/dist/
+desktop-app/release/
+desktop-app/out/
+desktop-app/*.exe
+desktop-app/*.dmg
+desktop-app/*.AppImage
+desktop-app/*.snap
+desktop-app/*.deb
+desktop-app/*.rpm
+desktop-app/*.msi
+desktop-app/*.zip
+desktop-app/*.tar.gz
+desktop-app/*.blockmap
+desktop-app-unpacked/
+
+# Electron Builder
+**/electron-builder.env
+
+# ==================== MOLTBOT ====================
+moltbot-main/node_modules/
+moltbot-main/dist/
+moltbot-main/build/
+moltbot-main/.pnpm-store/
+
+# ==================== TEMP FILES ====================
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.orig
+*~
+
+# ==================== LARGE / BINARY FILES ====================
+# Media (use Git LFS for large media if needed)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.mp3
+*.wav
+*.flac
+
+# Archives
+*.zip
+*.rar
+*.7z
+*.gz
+*.tar
+ 
+
+# ==================== DOCUMENTATION ====================
+# Keep Word/PDF docs but ignore editor temp files
+~$*.docx
+~$*.xlsx
+~$*.pptx
+
+# ==================== TEST DATA ====================
+musavir-ornek-belgeler/sensitive/
+test-data/
+*.test.json
+
+# ==================== SPECIFIC PROJECT FILES ====================
+# Moltbot full dump (very large)
+moltbot-full-code.xml
+
+# BMAD Method reference (external project)
+# BMAD-METHOD-main/
+
+# Compiled assets
+*.compiled.js
+*.compiled.css
+*.min.js
+*.min.css
+*.bundle.js
+
+# Package locks (keep for reproducibility - UNCOMMENT if you want to ignore)
+# package-lock.json
+# pnpm-lock.yaml
+# yarn.lock
+
+# ==================== DEPLOYMENT ====================
+# Docker
+*.tar
+docker-compose.override.yml
+
+# Kubernetes
+*.kubeconfig
+
+# ==================== STATS & REPORTS ====================
+stats.html
+*.stats.html
+bundle-stats.json
