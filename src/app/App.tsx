@@ -63,7 +63,8 @@ const App: React.FC = () => {
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <a href="/docs" target="_blank" rel="noopener noreferrer" className="hidden sm:block text-sm font-semibold text-slate-600 hover:text-blue-600">Dokümantasyon</a>
+                <a href="#/blog" className="hidden sm:block text-sm font-semibold text-slate-600 hover:text-blue-600">Blog</a>
+                <a href="#/docs" className="hidden sm:block text-sm font-semibold text-slate-600 hover:text-blue-600">Dokümantasyon</a>
                 <button className="hidden sm:block bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 active:scale-95">
                   Ücretsiz Dene
                 </button>
@@ -174,7 +175,7 @@ const App: React.FC = () => {
 
             {/* 2 CTA Buttons */}
             <div className="mt-12 flex flex-wrap justify-center gap-4">
-              <a href="/docs" target="_blank" rel="noopener noreferrer" className="bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-2xl text-lg font-bold hover:bg-slate-50 transition-all">
+              <a href="#/docs" className="bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-2xl text-lg font-bold hover:bg-slate-50 transition-all">
                 Dokümantasyon
               </a>
               <button className="bg-blue-600 text-white px-8 py-4 rounded-2xl text-lg font-bold hover:bg-blue-700 transition-all flex items-center gap-2 shadow-lg shadow-blue-600/20">
@@ -265,7 +266,8 @@ const App: React.FC = () => {
             <div>
               <h4 className="font-bold mb-6">KAYNAKLAR</h4>
               <ul className="space-y-4 text-slate-500 text-sm" role="list">
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Dokümantasyon</a></li>
+                <li><a href="#/blog" className="hover:text-blue-400 transition-colors">Blog</a></li>
+                <li><a href="#/docs" className="hover:text-blue-400 transition-colors">Dokümantasyon</a></li>
                 <li><a href="#" className="hover:text-blue-400 transition-colors">Hızlı Başlangıç</a></li>
                 <li><a href="#" className="hover:text-blue-400 transition-colors">SSS</a></li>
               </ul>
@@ -288,7 +290,7 @@ const App: React.FC = () => {
         <VideoModal
           isOpen={isVideoModalOpen}
           onClose={() => setIsVideoModalOpen(false)}
-          videoSrc="/nasil-calisir.mp4"
+          videoSrc={`${import.meta.env.BASE_URL}nasil-calisir.mp4`}
         />
       </div>
     </>

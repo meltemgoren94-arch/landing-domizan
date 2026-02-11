@@ -53,7 +53,7 @@ const DocsPage: React.FC = () => {
             <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <a href="/" className="flex items-center gap-2">
+                        <a href="#/" className="flex items-center gap-2">
                             <img src={logoWide} alt="Domizan" className="h-6 object-contain" />
                         </a>
                         <span className="text-slate-300">|</span>
