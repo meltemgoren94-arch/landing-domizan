@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { motion as Motion } from "framer-motion";
-import { Search, Tag, X, BookOpen, ArrowLeft } from "lucide-react";
+import { Search, Tag, X, BookOpen, ArrowLeft, ChevronDown, ChevronUp } from "lucide-react";
 import { blogArticles, getAllLabels, getPublishedArticles } from "./data/blogData";
 import { BlogCard } from "./components/BlogCard";
 import logoHeader from "@/assets/logo-text-blue.png";
@@ -8,6 +8,7 @@ import logoHeader from "@/assets/logo-text-blue.png";
 const BlogPage: React.FC = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedLabel, setSelectedLabel] = useState<string | null>(null);
+    const [isTagsExpanded, setIsTagsExpanded] = useState(true);
 
     const publishedArticles = useMemo(() => getPublishedArticles(), []);
     const allLabels = useMemo(() => getAllLabels(), []);
@@ -114,29 +115,61 @@ const BlogPage: React.FC = () => {
 
                         {/* Label Filters */}
                         {allLabels.length > 0 && (
-                            <div className="flex items-center gap-2 flex-wrap">
-                                <Tag className="w-4 h-4 text-slate-400 shrink-0" />
+                            <div className="mt-4 border-t border-slate-100 pt-4">
                                 <button
-                                    onClick={() => setSelectedLabel(null)}
-                                    className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${selectedLabel === null
-                                            ? "bg-blue-600 text-white shadow-md shadow-blue-600/20"
-                                            : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                                        }`}
+                                    onClick={() => setIsTagsExpanded(!isTagsExpanded)}
+                                    className="flex w-full items-center justify-between text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors group"
                                 >
-                                    Tümü
+                                    <div className="flex items-center gap-2">
+                                        <Tag className="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors" />
+                                        <span>Konulara Göre Filtrele</span>
+                                        {selectedLabel && (
+                                            <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full text-[10px]">
+                                                1 Seçili
+                                            </span>
+                                        )}
+                                    </div>
+                                    {isTagsExpanded ? (
+                                        <ChevronUp className="w-4 h-4 text-slate-400" />
+                                    ) : (
+                                        <ChevronDown className="w-4 h-4 text-slate-400" />
+                                    )}
                                 </button>
-                                {allLabels.map((label) => (
-                                    <button
-                                        key={label}
-                                        onClick={() => setSelectedLabel(selectedLabel === label ? null : label)}
-                                        className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${selectedLabel === label
+
+                                <Motion.div
+                                    initial={false}
+                                    animate={{
+                                        height: isTagsExpanded ? "auto" : 0,
+                                        opacity: isTagsExpanded ? 1 : 0,
+                                        marginTop: isTagsExpanded ? 12 : 0
+                                    }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    className="overflow-hidden"
+                                >
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                        <button
+                                            onClick={() => setSelectedLabel(null)}
+                                            className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${selectedLabel === null
                                                 ? "bg-blue-600 text-white shadow-md shadow-blue-600/20"
                                                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                                            }`}
-                                    >
-                                        {label}
-                                    </button>
-                                ))}
+                                                }`}
+                                        >
+                                            Tümü
+                                        </button>
+                                        {allLabels.map((label) => (
+                                            <button
+                                                key={label}
+                                                onClick={() => setSelectedLabel(selectedLabel === label ? null : label)}
+                                                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${selectedLabel === label
+                                                    ? "bg-blue-600 text-white shadow-md shadow-blue-600/20"
+                                                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                                                    }`}
+                                            >
+                                                {label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </Motion.div>
                             </div>
                         )}
                     </div>
