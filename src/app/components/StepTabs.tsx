@@ -22,26 +22,26 @@ const tabContents: TabContent[] = [
         icon: <Upload className="w-8 h-8" />
     },
     {
-        title: "AI Analiz Etsin",
-        description: "Yapay zeka belgenizi okur, vergi numarasını ve mükellef bilgisini otomatik çıkarır.",
+        title: "Analiz ve Tasnif",
+        description: "Yapay zeka belgenizi okur, vergi numarasını çıkarır ve doğru mükellef klasörüne otomatik olarak yerleştirir.",
         features: [
             "Fatura, dekont, beyanname otomatik tanınır",
             "Vergi numarası ile mükellef eşleştirme",
-            "Tarih ve tutar bilgisi çıkarma",
-            "Analiz güvenilirlik puanı gösterimi"
-        ],
-        icon: <Brain className="w-8 h-8" />
-    },
-    {
-        title: "Otomatik Klasörle",
-        description: "Belge doğru mükellef klasörüne otomatik taşınır. Hiçbir evrak kaybolmaz.",
-        features: [
-            "Mükellefi bulur, klasörüne yerleştirir",
-            "Tüm işlemler kayıt altına alınır",
-            "Hatalı eşleşmeleri tek tıkla düzeltin",
-            "Sistem düzeltmelerden öğrenir"
+            "Otomatik klasörleme ve arşivleme",
+            "Hatalı eşleşmelerden öğrenen sistem"
         ],
         icon: <FolderCheck className="w-8 h-8" />
+    },
+    {
+        title: "7/24 Canlı Asistan",
+        description: "Ofisiniz Cebinizde. Telegram üzerinden sistemimizle konuşun, dilediğinizi sorun, anında cevap ve rapor alın.",
+        features: [
+            "Resmi Gazete Takibi: Sizi ilgilendiren tebliğlerde anında bildirim",
+            "Soru - Cevap: 'Ahmet Bey'in KDV'si ne kadar?' diye sorun",
+            "Anlık raporlama ve belge sorgulama",
+            "Mobil erişim özgürlüğü"
+        ],
+        icon: <Brain className="w-8 h-8" />
     }
 ];
 
@@ -58,8 +58,8 @@ export const StepTabs: React.FC = () => {
                         key={index}
                         onClick={() => setActiveTab(index)}
                         className={`flex items-center gap-2 sm:gap-3 px-4 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold text-sm sm:text-base transition-all ${activeTab === index
-                                ? "bg-blue-600 text-white shadow-lg shadow-blue-600/20"
-                                : "bg-white text-slate-600 border border-slate-200 hover:border-blue-300 hover:text-blue-600"
+                            ? "bg-blue-600 text-white shadow-lg shadow-blue-600/20"
+                            : "bg-white text-slate-600 border border-slate-200 hover:border-blue-300 hover:text-blue-600"
                             }`}
                     >
                         <span className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${activeTab === index ? "bg-white/20" : "bg-slate-100"
@@ -76,8 +76,8 @@ export const StepTabs: React.FC = () => {
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div>
                         <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${activeTab === 0 ? "bg-blue-100 text-blue-600" :
-                                activeTab === 1 ? "bg-purple-100 text-purple-600" :
-                                    "bg-green-100 text-green-600"
+                            activeTab === 1 ? "bg-purple-100 text-purple-600" :
+                                "bg-green-100 text-green-600"
                             }`}>
                             {currentTab.icon}
                         </div>
@@ -100,8 +100,8 @@ export const StepTabs: React.FC = () => {
                     {/* Visual representation */}
                     <div className="bg-slate-50 rounded-2xl p-8 flex items-center justify-center min-h-[280px]">
                         <div className={`text-center ${activeTab === 0 ? "text-blue-500" :
-                                activeTab === 1 ? "text-purple-500" :
-                                    "text-green-500"
+                            activeTab === 1 ? "text-purple-500" :
+                                "text-green-500"
                             }`}>
                             <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-current/10 flex items-center justify-center">
                                 {activeTab === 0 && <Upload className="w-12 h-12" />}

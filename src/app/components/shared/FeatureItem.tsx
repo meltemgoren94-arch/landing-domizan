@@ -6,7 +6,7 @@ import { FeatureItemProps } from '@/types';
  * Used in the Features section of the landing page
  */
 export const FeatureItem: React.FC<FeatureItemProps> = ({ icon, title, description }) => (
-    <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 flex flex-col items-start gap-6 hover:shadow-lg transition-all group">
+    <div className="bg-white p-6 rounded-[2rem] border border-slate-100 flex flex-col items-start gap-4 hover:shadow-lg transition-all group">
         <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center group-hover:scale-110 transition-transform">
             {React.cloneElement(icon as React.ReactElement, { className: "w-6 h-6" })}
         </div>

@@ -19,6 +19,7 @@ import { AgentAnimation } from "./components/AgentAnimation";
 import { CountdownTimer } from "./components/CountdownTimer";
 import { PresentationModal } from "./components/PresentationModal";
 import { LeadFormModal } from "./components/LeadFormModal";
+import { Chatbot } from "./components/Chatbot";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import { MobileNav } from "./components/layout/MobileNav";
 import { StructuredData } from "./components/seo/StructuredData";
@@ -65,8 +66,6 @@ const App: React.FC = () => {
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <a href="#/blog" className="hidden sm:block text-sm font-semibold text-slate-600 hover:text-blue-600">Blog</a>
-                <a href="#/docs" className="hidden sm:block text-sm font-semibold text-slate-600 hover:text-blue-600">Dokümantasyon</a>
                 <button
                   onClick={() => setIsLeadModalOpen(true)}
                   className="hidden sm:block bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 active:scale-95"
@@ -219,13 +218,13 @@ const App: React.FC = () => {
           </section>
 
           {/* Feature Grid */}
-          <section id="features" aria-labelledby="features-title" className="py-24 px-6 bg-slate-50">
-            <div className="max-w-7xl mx-auto text-center mb-16">
+          <section id="features" aria-labelledby="features-title" className="py-12 px-6 bg-slate-50">
+            <div className="max-w-7xl mx-auto text-center mb-10">
               <h2 id="features-title" className="text-3xl md:text-4xl font-bold">Kullandıkça Öğrenen, <span className="text-blue-600">Her Gün Daha Akıllı</span></h2>
               <p className="mt-4 text-slate-500">Bir müşterinin düzeltmesi tüm sisteme katkı sağlar. %94 tutarlılıkla pattern oluşturur, hata oranını her gün düşürür.</p>
             </div>
 
-            <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
+            <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <FeatureItem
                 icon={<FileSearch className="text-blue-600" />}
                 title="Akıllı Belge Analizi"
@@ -335,6 +334,9 @@ const App: React.FC = () => {
           isOpen={isLeadModalOpen}
           onClose={() => setIsLeadModalOpen(false)}
         />
+
+        {/* Chatbot */}
+        <Chatbot onOpenLeadModal={() => setIsLeadModalOpen(true)} />
       </div>
     </>
   );
