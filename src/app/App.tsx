@@ -33,10 +33,9 @@ import { NavLink } from "@/types";
 
 // Navigation links used in both desktop and mobile nav
 const navLinks: NavLink[] = [
-  { href: "#problems", label: "Sorunlar" },
-  { href: "#how-it-works", label: "Nasıl Çalışır?" },
-  { href: "#features", label: "Özellikler" },
-  { href: "#security", label: "Güvenlik" },
+  { href: "#/blog", label: "Blog" },
+  { href: "#/docs", label: "Dokümantasyon" },
+  { href: "https://presentation.domizan.com/", label: "Nasıl Çalışır?" },
 ];
 
 const App: React.FC = () => {
