@@ -8,7 +8,7 @@ import logoHeader from "@/assets/logo-text-blue.png";
 const BlogPage: React.FC = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedLabel, setSelectedLabel] = useState<string | null>(null);
-    const [isTagsExpanded, setIsTagsExpanded] = useState(true);
+    const [isTagsExpanded, setIsTagsExpanded] = useState(false);
 
     const publishedArticles = useMemo(() => getPublishedArticles(), []);
     const allLabels = useMemo(() => getAllLabels(), []);
@@ -98,7 +98,7 @@ const BlogPage: React.FC = () => {
                             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                             <input
                                 type="text"
-                                placeholder="Makale ara..."
+                                placeholder="Etiket ile ara..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
@@ -116,12 +116,9 @@ const BlogPage: React.FC = () => {
                         {/* Label Filters */}
                         {allLabels.length > 0 && (
                             <div className="mt-4 border-t border-slate-100 pt-4">
-                                <button
-                                    onClick={() => setIsTagsExpanded(!isTagsExpanded)}
-                                    className="flex w-full items-center justify-between text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors group"
-                                >
+                                <div className="flex w-full items-center justify-between text-sm font-semibold text-slate-700 mb-3">
                                     <div className="flex items-center gap-2">
-                                        <Tag className="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors" />
+                                        <Tag className="w-4 h-4 text-slate-400" />
                                         <span>Konulara Göre Filtrele</span>
                                         {selectedLabel && (
                                             <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full text-[10px]">
@@ -129,23 +126,9 @@ const BlogPage: React.FC = () => {
                                             </span>
                                         )}
                                     </div>
-                                    {isTagsExpanded ? (
-                                        <ChevronUp className="w-4 h-4 text-slate-400" />
-                                    ) : (
-                                        <ChevronDown className="w-4 h-4 text-slate-400" />
-                                    )}
-                                </button>
+                                </div>
 
-                                <Motion.div
-                                    initial={false}
-                                    animate={{
-                                        height: isTagsExpanded ? "auto" : 0,
-                                        opacity: isTagsExpanded ? 1 : 0,
-                                        marginTop: isTagsExpanded ? 12 : 0
-                                    }}
-                                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                                    className="overflow-hidden"
-                                >
+                                <div className="overflow-hidden">
                                     <div className="flex items-center gap-2 flex-wrap">
                                         <button
                                             onClick={() => setSelectedLabel(null)}
@@ -156,7 +139,7 @@ const BlogPage: React.FC = () => {
                                         >
                                             Tümü
                                         </button>
-                                        {allLabels.map((label) => (
+                                        {allLabels.slice(0, isTagsExpanded ? undefined : 7).map((label) => (
                                             <button
                                                 key={label}
                                                 onClick={() => setSelectedLabel(selectedLabel === label ? null : label)}
@@ -168,8 +151,24 @@ const BlogPage: React.FC = () => {
                                                 {label}
                                             </button>
                                         ))}
+                                        {allLabels.length > 7 && (
+                                            <button
+                                                onClick={() => setIsTagsExpanded(!isTagsExpanded)}
+                                                className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-200 transition-all flex items-center gap-1"
+                                            >
+                                                {isTagsExpanded ? (
+                                                    <>
+                                                        Daha Az Göster <ChevronUp className="w-3 h-3" />
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        Daha Fazlası <ChevronDown className="w-3 h-3" />
+                                                    </>
+                                                )}
+                                            </button>
+                                        )}
                                     </div>
-                                </Motion.div>
+                                </div>
                             </div>
                         )}
                     </div>

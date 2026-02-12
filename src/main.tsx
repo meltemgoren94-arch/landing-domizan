@@ -3,6 +3,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import App from "./app/App.tsx";
 import DocsPage from "./app/DocsPage.tsx";
 import BlogPage from "./app/BlogPage.tsx";
+import BlogPost from "./app/BlogPost.tsx";
 import "./styles/index.css";
 
 createRoot(document.getElementById("root")!).render(
@@ -11,6 +12,7 @@ createRoot(document.getElementById("root")!).render(
       <Route path="/" element={<App />} />
       <Route path="/docs" element={<DocsPage />} />
       <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/:slug" element={<BlogPost />} />
     </Routes>
   </HashRouter>
 );
