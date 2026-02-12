@@ -16,7 +16,7 @@ interface CountdownTimerProps {
 export const CountdownTimer: React.FC<CountdownTimerProps> = ({ className = "" }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
-    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => {
         if (isPaused) return;
@@ -50,19 +50,19 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({ className = "" }
 
     return (
         <span className={`inline-flex items-center ${className}`}>
-            {/* Countdown container - fixed width, transparent background */}
-            <span className="inline-flex items-center justify-start w-[180px]">
+            {/* Countdown container - natural width */}
+            <span className="inline-flex items-center justify-start">
                 <AnimatePresence mode="wait">
                     <motion.span
                         key={currentIndex}
-                        initial={{ opacity: 0, y: 10, scale: 0.8 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -10, scale: 0.8 }}
-                        transition={{ duration: 0.2, ease: "easeOut" }}
-                        className={`inline-flex items-center gap-1 font-extrabold text-[0.9em] ${currentStep.color}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3, ease: "backOut" }}
+                        className={`inline-flex items-center gap-1 font-extrabold whitespace-nowrap ${currentStep.color}`}
                     >
-                        <span className="text-inherit">{currentStep.value}</span>
-                        <span className="text-inherit text-[0.85em]">{currentStep.unit}</span>
+                        <span className="tabular-nums tracking-tight">{currentStep.value}</span>
+                        <span className="text-[0.85em]">{currentStep.unit}</span>
                     </motion.span>
                 </AnimatePresence>
             </span>

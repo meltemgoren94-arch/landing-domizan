@@ -13,11 +13,12 @@ import {
   HardDrive,
   EyeOff,
   ShieldAlert,
-  Play
+  Presentation
 } from "lucide-react";
 import { AgentAnimation } from "./components/AgentAnimation";
 import { CountdownTimer } from "./components/CountdownTimer";
-import { VideoModal } from "./components/VideoModal";
+import { PresentationModal } from "./components/PresentationModal";
+import { LeadFormModal } from "./components/LeadFormModal";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import { MobileNav } from "./components/layout/MobileNav";
 import { StructuredData } from "./components/seo/StructuredData";
@@ -38,7 +39,8 @@ const navLinks: NavLink[] = [
 ];
 
 const App: React.FC = () => {
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isPresentationModalOpen, setIsPresentationModalOpen] = useState(false);
+  const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
 
   return (
     <>
@@ -65,7 +67,10 @@ const App: React.FC = () => {
               <div className="flex items-center gap-4">
                 <a href="#/blog" className="hidden sm:block text-sm font-semibold text-slate-600 hover:text-blue-600">Blog</a>
                 <a href="#/docs" className="hidden sm:block text-sm font-semibold text-slate-600 hover:text-blue-600">Dokümantasyon</a>
-                <button className="hidden sm:block bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 active:scale-95">
+                <button
+                  onClick={() => setIsLeadModalOpen(true)}
+                  className="hidden sm:block bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 active:scale-95"
+                >
                   Ücretsiz Dene
                 </button>
                 {/* Mobile Navigation */}
@@ -85,11 +90,12 @@ const App: React.FC = () => {
                 transition={{ duration: 0.8 }}
               >
                 <h1 id="hero-title" className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.1] text-slate-900">
-                  Haftalık Rapor İşini <br className="hidden sm:block" />
-                  <span className="inline-flex items-baseline gap-4 flex-wrap">
-                    <CountdownTimer />
-                    <span className="ml-[20px]">'e İndirin</span>
-                  </span>
+                  Haftalık <br />
+                  Rapor İşini <br />
+                  <span className="inline-flex items-baseline gap-1 flex-wrap">
+                    <CountdownTimer />'e
+                  </span> <br />
+                  İndirin
                 </h1>
                 <p className="mt-8 text-lg text-slate-600 leading-relaxed max-w-xl">
                   Domizan evrakları otomatik ayrıştırsın, mükellef dosyalarını hatasız yönetsin.
@@ -97,15 +103,18 @@ const App: React.FC = () => {
                   Telegram üzerinden sistemimizle konuşun, ofisinizi mobil özgürlükle yönetin.
                 </p>
                 <div className="mt-10 flex flex-wrap gap-4">
-                  <button className="bg-blue-600 text-white px-8 sm:px-10 py-4 rounded-2xl text-lg font-bold hover:bg-blue-700 transition-all flex items-center gap-2 shadow-xl shadow-blue-600/20">
+                  <button
+                    onClick={() => setIsLeadModalOpen(true)}
+                    className="bg-blue-600 text-white px-8 sm:px-10 py-4 rounded-2xl text-lg font-bold hover:bg-blue-700 transition-all flex items-center gap-2 shadow-xl shadow-blue-600/20"
+                  >
                     Ücretsiz Dene
                     <ArrowRight className="w-5 h-5" aria-hidden="true" />
                   </button>
                   <button
-                    onClick={() => setIsVideoModalOpen(true)}
+                    onClick={() => setIsPresentationModalOpen(true)}
                     className="bg-white text-slate-700 border border-slate-200 px-8 sm:px-10 py-4 rounded-2xl text-lg font-bold hover:bg-slate-50 transition-all flex items-center gap-2"
                   >
-                    <Play className="w-5 h-5" aria-hidden="true" />
+                    <Presentation className="w-5 h-5" aria-hidden="true" />
                     Domizan Nedir?
                   </button>
                 </div>
@@ -157,10 +166,31 @@ const App: React.FC = () => {
               />
             </div>
 
-            <div className="mt-12 text-center">
-              <button className="bg-blue-600 text-white px-8 sm:px-12 py-4 rounded-2xl text-lg font-bold hover:bg-blue-700 transition-all">
+            <div className="mt-12 flex flex-col items-center">
+              <h3 className="text-2xl font-bold text-slate-800 mb-8">
                 Domizan ile bu sorunlar son buluyor
-              </button>
+              </h3>
+              <div className="flex flex-wrap justify-center gap-4">
+                <a
+                  href="#/blog"
+                  className="bg-white text-slate-700 border border-slate-200 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 transition-all shadow-sm flex items-center gap-2"
+                >
+                  Blog
+                </a>
+                <button
+                  onClick={() => setIsPresentationModalOpen(true)}
+                  className="bg-white text-slate-700 border border-slate-200 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 transition-all shadow-sm flex items-center gap-2"
+                >
+                  <Presentation className="w-5 h-5 text-blue-600" />
+                  Nasıl Çalışır?
+                </button>
+                <a
+                  href="#/docs"
+                  className="bg-white text-slate-700 border border-slate-200 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 transition-all shadow-sm flex items-center gap-2"
+                >
+                  Dokümantasyon
+                </a>
+              </div>
             </div>
           </section>
 
@@ -178,7 +208,10 @@ const App: React.FC = () => {
               <a href="#/docs" className="bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-2xl text-lg font-bold hover:bg-slate-50 transition-all">
                 Dokümantasyon
               </a>
-              <button className="bg-blue-600 text-white px-8 py-4 rounded-2xl text-lg font-bold hover:bg-blue-700 transition-all flex items-center gap-2 shadow-lg shadow-blue-600/20">
+              <button
+                onClick={() => setIsLeadModalOpen(true)}
+                className="bg-blue-600 text-white px-8 py-4 rounded-2xl text-lg font-bold hover:bg-blue-700 transition-all flex items-center gap-2 shadow-lg shadow-blue-600/20"
+              >
                 Ücretsiz Dene
                 <ArrowRight className="w-5 h-5" />
               </button>
@@ -282,15 +315,25 @@ const App: React.FC = () => {
           </div>
           <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-600">
             <div>© 2026 Domizan. Tüm hakları saklıdır. | KVKK Uyumlu</div>
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition-all">Ücretsiz Dene</button>
+            <button
+              onClick={() => setIsLeadModalOpen(true)}
+              className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition-all"
+            >
+              Ücretsiz Dene
+            </button>
           </div>
         </footer>
 
-        {/* Video Modal */}
-        <VideoModal
-          isOpen={isVideoModalOpen}
-          onClose={() => setIsVideoModalOpen(false)}
-          videoSrc={`${import.meta.env.BASE_URL}nasil-calisir.mp4`}
+        {/* Presentation Modal */}
+        <PresentationModal
+          isOpen={isPresentationModalOpen}
+          onClose={() => setIsPresentationModalOpen(false)}
+        />
+
+        {/* Lead Form Modal */}
+        <LeadFormModal
+          isOpen={isLeadModalOpen}
+          onClose={() => setIsLeadModalOpen(false)}
         />
       </div>
     </>
