@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CheckCircle2, Loader2, Send } from "lucide-react";
+import { X, CheckCircle2, Loader2, Send, AlertCircle } from "lucide-react";
 
 interface LeadFormModalProps {
     isOpen: boolean;
     onClose: () => void;
 }
 
-type FormStatus = "idle" | "submitting" | "success";
+type FormStatus = "idle" | "submitting" | "success" | "error";
 
 export const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose }) => {
     const [status, setStatus] = useState<FormStatus>("idle");
+    const [errorMessage, setErrorMessage] = useState("");
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -23,6 +24,7 @@ export const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose })
             // Small delay to reset after animation
             const timer = setTimeout(() => {
                 setStatus("idle");
+                setErrorMessage("");
                 setFormData({ name: "", email: "", phone: "" });
             }, 300);
             return () => clearTimeout(timer);
@@ -41,16 +43,32 @@ export const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose })
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus("submitting");
+        setErrorMessage("");
 
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        try {
+            const response = await fetch("/api/send-email", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
 
-        setStatus("success");
+            if (!response.ok) {
+                const data = await response.json().catch(() => ({}));
+                throw new Error(data.error || "Bir hata oluştu.");
+            }
 
-        // Auto close after success
-        setTimeout(() => {
-            onClose();
-        }, 2000);
+            setStatus("success");
+
+            // Auto close after success
+            setTimeout(() => {
+                onClose();
+            }, 2500);
+        } catch (err) {
+            setErrorMessage(
+                err instanceof Error ? err.message : "Bağlantı hatası. Lütfen tekrar deneyin."
+            );
+            setStatus("error");
+        }
     };
 
     return (
@@ -111,6 +129,18 @@ export const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose })
                                                 Bilgilerinizi bırakın, size özel teklifimizle dönüş yapalım.
                                             </p>
                                         </div>
+
+                                        {/* Error message */}
+                                        {status === "error" && (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: -8 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                className="flex items-center gap-2 p-3 mb-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm"
+                                            >
+                                                <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                                                {errorMessage}
+                                            </motion.div>
+                                        )}
 
                                         <form onSubmit={handleSubmit} className="space-y-4">
                                             <div>
