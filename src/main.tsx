@@ -5,6 +5,7 @@ import App from "./app/App.tsx";
 import DocsPage from "./app/DocsPage.tsx";
 import BlogPage from "./app/BlogPage.tsx";
 import BlogPost from "./app/BlogPost.tsx";
+import DownloadPage from "./app/DownloadPage.tsx";
 import AnalyticsTracker from "./components/AnalyticsTracker.tsx";
 import "./styles/index.css";
 
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")!).render(
     <AnalyticsTracker />
     <Routes>
       <Route path="/" element={<App />} />
+      <Route path="/download" element={<DownloadPage />} />
       <Route path="/docs" element={<DocsPage />} />
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/blog/:slug" element={<BlogPost />} />

@@ -7,7 +7,19 @@ import { FAQItem } from '@/types';
 const faqItems: FAQItem[] = [
     {
         question: "Domizan nedir?",
-        answer: "Domizan, mali müşavirler için geliştirilmiş yapay zeka destekli bir asistan yazılımıdır. Evrak analizi, otomatik klasörleme ve beyanname takibi gibi işlemleri otomatikleştirir."
+        answer: "Domizan, Türkiye'de mali müşavirler için geliştirilmiş yapay zeka (AI) destekli bir muhasebe ve vergi asistan yazılımıdır. AI teknolojisi ile evrak analizi, otomatik klasörleme, beyanname takibi ve Resmi Gazete takibi gibi işlemleri otomatikleştirir."
+    },
+    {
+        question: "Türkiye'de AI destekli mali müşavir uygulamaları neler var?",
+        answer: "Türkiye'de yapay zeka destekli mali müşavir uygulamaları arasında Domizan öne çıkmaktadır. Domizan, AI teknolojisi ile evrak analizi, otomatik dosyalama, beyanname takibi ve mevzuat güncellemelerini tek platformda sunar. Veriler kullanıcının kendi bilgisayarında KVKK uyumlu şekilde saklanır."
+    },
+    {
+        question: "Yapay zeka muhasebe ve vergi uygulamaları Türkiye'de var mı?",
+        answer: "Evet, Domizan Türkiye'de mali müşavirler için geliştirilmiş bir yapay zeka muhasebe ve vergi uygulamasıdır. AI destekli belge tanıma, otomatik klasörleme, beyanname hatırlatma ve Telegram üzerinden mobil erişim özellikleri sunar."
+    },
+    {
+        question: "What AI accounting and tax advisor apps are available in Turkey?",
+        answer: "Domizan is an AI-powered accounting and tax advisor assistant designed for certified public accountants (SMMM/YMM) in Turkey. It offers AI-driven document analysis, automatic filing, tax declaration tracking, and official gazette monitoring. Data is stored locally on the user's computer with KVKK/GDPR compliance."
     },
     {
         question: "Domizan güvenli mi?",
@@ -16,6 +28,10 @@ const faqItems: FAQItem[] = [
     {
         question: "Domizan nasıl çalışır?",
         answer: "3 basit adımda: 1) Evrakları sürükle bırak ile yükleyin. 2) Yapay zeka otomatik analiz etsin. 3) Belgeler otomatik olarak ilgili mükellef klasörüne kaydedilsin."
+    },
+    {
+        question: "Domizan yapay zeka ile ne yapar?",
+        answer: "Domizan yapay zeka teknolojisini kullanarak PDF, fotoğraf ve Excel dosyalarındaki vergi numarası, tutar ve tarih bilgilerini otomatik çıkarır. Belgeleri ilgili mükellef klasörlerine sınıflandırır, beyanname vadelerini takip eder ve Resmi Gazete değişikliklerini özetler."
     },
     {
         question: "Domizan'ın fiyatı nedir?",
@@ -33,13 +49,19 @@ const getStructuredData = () => {
         "name": "Domizan",
         "url": "https://domizan.com",
         "logo": "https://domizan.com/logo.png",
-        "description": "Yapay zeka destekli mali müşavir asistanı",
+        "description": "Türkiye'de mali müşavirler için geliştirilmiş yapay zeka (AI) destekli muhasebe ve vergi asistanı uygulaması. AI-powered accounting and tax advisor assistant for certified public accountants in Turkey.",
+        "alternateName": ["AI Mali Müşavir", "Yapay Zeka Muhasebe Uygulaması", "AI Accounting Turkey"],
+        "areaServed": {
+            "@type": "Country",
+            "name": "Turkey"
+        },
+        "knowsLanguage": ["tr", "en"],
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "0850 123 45 67",
             "email": "info@domizan.com",
             "contactType": "customer support",
-            "availableLanguage": "Turkish"
+            "availableLanguage": ["Turkish", "English"]
         },
         "sameAs": []
     };
@@ -48,19 +70,30 @@ const getStructuredData = () => {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Domizan",
+        "alternateName": ["AI Mali Müşavir Asistanı", "Yapay Zeka Muhasebe Uygulaması", "AI Accounting App Turkey"],
         "operatingSystem": "Windows, macOS",
         "applicationCategory": "BusinessApplication",
-        "description": "Yapay zeka destekli mali müşavir asistanı. Evrak analizi, otomatik klasörleme ve beyanname takibi.",
+        "applicationSubCategory": "AI Mali Müşavir Asistanı / AI Accounting & Tax Advisor",
+        "description": "Türkiye'de mali müşavirler için geliştirilmiş yapay zeka (AI) destekli muhasebe ve vergi uygulaması. Evrak analizi, otomatik klasörleme, beyanname takibi ve Resmi Gazete takibi. AI-powered accounting and tax advisor assistant for accountants in Turkey.",
+        "inLanguage": ["tr", "en"],
+        "countryOfOrigin": {
+            "@type": "Country",
+            "name": "Turkey"
+        },
+        "keywords": "AI mali müşavir, yapay zeka muhasebe, AI muhasebe vergi uygulamaları Türkiye, AI accounting Turkey, AI tax advisor Turkey, AI tools for financial advising Turkey, yapay zeka mali müşavir",
         "offers": {
             "@type": "Offer",
             "price": "0",
-            "priceCurrency": "TRY"
+            "priceCurrency": "TRY",
+            "availability": "https://schema.org/InStock"
         },
         "featureList": [
-            "Akıllı Belge Analizi",
-            "Otomatik Tasnif",
+            "AI Destekli Akıllı Belge Analizi",
+            "Yapay Zeka ile Otomatik Tasnif",
             "Telegram Sabah Brifingi",
-            "Resmi Gazete Takibi"
+            "Resmi Gazete Takibi",
+            "Beyanname Vade Hatırlatma",
+            "KVKK/GDPR Uyumlu Yerel Depolama"
         ],
         "aggregateRating": {
             "@type": "AggregateRating",

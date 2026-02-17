@@ -10,6 +10,15 @@ export interface BlogArticle {
 
 export const blogArticles: BlogArticle[] = [
     {
+        id: 26,
+        title: "Türkiye'de Yapay Zeka Destekli Mali Müşavir Uygulamaları: AI Muhasebe ve Vergi Çözümleri",
+        description: "Türkiye'de AI destekli mali müşavir uygulamaları neler? Yapay zeka muhasebe ve vergi uygulamaları ile mali müşavirlik süreçlerini nasıl dönüştürebilirsiniz? AI accounting and tax advisor apps in Turkey.",
+        content: "",
+        labels: ["Yapay Zeka", "AI Mali Müşavir", "Muhasebe", "Dijital Dönüşüm", "Teknoloji"],
+        date: "17 Şubat 2026",
+        slug: "yapay-zeka-mali-musavir-turkiye"
+    },
+    {
         id: 1,
         title: "KDV İndirimi ve İstisnaları Uygulaması",
         description: "KDV indirim hakkı, mal veya hizmetin fatura karşılığında teslim alınıp ilgili takvim yılını takip eden yılın sonuna kadar kullanılabilir.",

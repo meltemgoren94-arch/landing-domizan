@@ -18,7 +18,6 @@ import {
 import { AgentAnimation } from "./components/AgentAnimation";
 import { CountdownTimer } from "./components/CountdownTimer";
 import { PresentationModal } from "./components/PresentationModal";
-import { LeadFormModal } from "./components/LeadFormModal";
 import { Chatbot } from "./components/Chatbot";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import { MobileNav } from "./components/layout/MobileNav";
@@ -36,11 +35,11 @@ const navLinks: NavLink[] = [
   { href: "#/blog", label: "Blog" },
   { href: "#/docs", label: "Dokümantasyon" },
   { href: "https://presentation.domizan.com/", label: "Nasıl Çalışır?" },
+  { href: "#/download", label: "İndir" },
 ];
 
 const App: React.FC = () => {
   const [isPresentationModalOpen, setIsPresentationModalOpen] = useState(false);
-  const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
 
   return (
     <>
@@ -65,12 +64,12 @@ const App: React.FC = () => {
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <button
-                  onClick={() => setIsLeadModalOpen(true)}
+                <a
+                  href="#/download"
                   className="hidden sm:block bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 active:scale-95"
                 >
-                  Ücretsiz Dene
-                </button>
+                  İndir
+                </a>
                 {/* Mobile Navigation */}
                 <MobileNav links={navLinks} logo={logoHeader} />
               </div>
@@ -101,13 +100,13 @@ const App: React.FC = () => {
                   Telegram üzerinden sistemimizle konuşun, ofisinizi mobil özgürlükle yönetin.
                 </p>
                 <div className="mt-10 flex flex-wrap gap-4">
-                  <button
-                    onClick={() => setIsLeadModalOpen(true)}
+                  <a
+                    href="#/download"
                     className="bg-blue-600 text-white px-8 sm:px-10 py-4 rounded-2xl text-lg font-bold hover:bg-blue-700 transition-all flex items-center gap-2 shadow-xl shadow-blue-600/20"
                   >
-                    Ücretsiz Dene
+                    İndir
                     <ArrowRight className="w-5 h-5" aria-hidden="true" />
-                  </button>
+                  </a>
                   <button
                     onClick={() => setIsPresentationModalOpen(true)}
                     className="bg-white text-slate-700 border border-slate-200 px-8 sm:px-10 py-4 rounded-2xl text-lg font-bold hover:bg-slate-50 transition-all flex items-center gap-2"
@@ -206,13 +205,13 @@ const App: React.FC = () => {
               <a href="#/docs" className="bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-2xl text-lg font-bold hover:bg-slate-50 transition-all">
                 Dokümantasyon
               </a>
-              <button
-                onClick={() => setIsLeadModalOpen(true)}
+              <a
+                href="#/download"
                 className="bg-blue-600 text-white px-8 py-4 rounded-2xl text-lg font-bold hover:bg-blue-700 transition-all flex items-center gap-2 shadow-lg shadow-blue-600/20"
               >
-                Ücretsiz Dene
+                İndir
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </a>
             </div>
           </section>
 
@@ -313,12 +312,12 @@ const App: React.FC = () => {
           </div>
           <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-600">
             <div>© 2026 Domizan. Tüm hakları saklıdır. | KVKK Uyumlu</div>
-            <button
-              onClick={() => setIsLeadModalOpen(true)}
+            <a
+              href="#/download"
               className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition-all"
             >
-              Ücretsiz Dene
-            </button>
+              İndir
+            </a>
           </div>
         </footer>
 
@@ -328,14 +327,8 @@ const App: React.FC = () => {
           onClose={() => setIsPresentationModalOpen(false)}
         />
 
-        {/* Lead Form Modal */}
-        <LeadFormModal
-          isOpen={isLeadModalOpen}
-          onClose={() => setIsLeadModalOpen(false)}
-        />
-
         {/* Chatbot */}
-        <Chatbot onOpenLeadModal={() => setIsLeadModalOpen(true)} />
+        <Chatbot onOpenLeadModal={() => window.location.href = '#/download'} />
       </div>
     </>
   );
