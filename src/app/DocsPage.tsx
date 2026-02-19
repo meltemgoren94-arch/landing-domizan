@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Book, FileText, Users, BarChart3, HelpCircle, ChevronRight, Menu, X, Home } from "lucide-react";
 import logoWide from "@/assets/logo-icon-3d.png";
+import docsImage1 from "@/assets/docs/docs-image-1.png";
+import docsImage2 from "@/assets/docs/docs-image-2.png";
+import docsImage3 from "@/assets/docs/docs-image-3.png";
+import docsImage4 from "@/assets/docs/docs-image-4.png";
+import docsUploadConfirm from "@/assets/docs/docs-upload-confirm.png";
 
 interface MenuItem {
     id: string;
@@ -135,8 +140,8 @@ const DocsPage: React.FC = () => {
                                     <p className="text-sm text-slate-500">Video ile adım adım kurulum</p>
                                 </div>
                             </div>
-                            <div className="aspect-video bg-slate-200 rounded-lg flex items-center justify-center text-slate-400">
-                                [VIDEO: Uygulama Kurulum Rehberi]
+                            <div className="aspect-video bg-slate-200 rounded-lg flex items-center justify-center text-slate-400 overflow-hidden">
+                                <img src={docsImage4} alt="Uygulama Kurulum Rehberi" className="w-full h-full object-cover" />
                             </div>
                         </div>
 
@@ -186,8 +191,8 @@ const DocsPage: React.FC = () => {
                             Panel Genel Bakış
                         </h2>
 
-                        <div className="aspect-video bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 mb-8 border border-slate-200">
-                            [IMAGE: Panel Genel Bakış]
+                        <div className="aspect-video bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 mb-8 border border-slate-200 overflow-hidden">
+                            <img src={docsImage1} alt="Panel Genel Bakış" className="w-full h-full object-cover" />
                         </div>
 
                         <h3 className="text-lg font-semibold text-slate-900 mb-4">Ana Ekran Bileşenleri</h3>
@@ -237,8 +242,8 @@ const DocsPage: React.FC = () => {
 
                         <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 mb-8">
                             <h3 className="font-semibold text-slate-900 mb-4">Belge Yükleme ve Onaylama</h3>
-                            <div className="aspect-video bg-slate-200 rounded-lg flex items-center justify-center text-slate-400">
-                                [VIDEO: Belge Yükleme ve Onaylama]
+                            <div className="aspect-video bg-slate-200 rounded-lg flex items-center justify-center text-slate-400 overflow-hidden">
+                                <img src={docsUploadConfirm} alt="Belge Yükleme ve Onaylama" className="w-full h-full object-cover" />
                             </div>
                         </div>
 
@@ -258,8 +263,8 @@ const DocsPage: React.FC = () => {
                             </div>
                             <div>
                                 <h4 className="font-semibold text-slate-900 mb-3">Adım 3: Doğrulama Popup'ı</h4>
-                                <div className="aspect-video bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 mb-4 border border-slate-200">
-                                    [IMAGE: Doğrulama Popup Ekranı]
+                                <div className="aspect-video bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 mb-4 border border-slate-200 overflow-hidden">
+                                    <img src={docsImage2} alt="Doğrulama Popup Ekranı" className="w-full h-full object-cover" />
                                 </div>
                                 <p className="text-slate-600">Popup'ta belge türü, mükellef, dosyalama tarihi, hedef klasör ve güven skorunu göreceksiniz.</p>
                             </div>
@@ -322,8 +327,8 @@ const DocsPage: React.FC = () => {
                         </h2>
 
                         <h3 className="text-lg font-semibold text-slate-900 mb-4">Token Kullanım Raporu</h3>
-                        <div className="aspect-video bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 mb-6 border border-slate-200">
-                            [IMAGE: Token Kullanım Grafiği]
+                        <div className="aspect-video bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 mb-6 border border-slate-200 overflow-hidden">
+                            <img src={docsImage3} alt="Token Kullanım Grafiği" className="w-full h-full object-cover" />
                         </div>
 
                         <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 mb-6">
