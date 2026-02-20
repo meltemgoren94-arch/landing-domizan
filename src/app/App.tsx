@@ -35,7 +35,6 @@ const navLinks: NavLink[] = [
   { href: "#/blog", label: "Blog" },
   { href: "#/docs", label: "Dokümantasyon" },
   { href: "https://presentation.domizan.com/", label: "Nasıl Çalışır?" },
-  { href: "#/download", label: "İndir" },
 ];
 
 const App: React.FC = () => {
@@ -68,7 +67,7 @@ const App: React.FC = () => {
                   href="#/download"
                   className="hidden sm:block bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 active:scale-95"
                 >
-                  İndir
+                  Hemen İndir
                 </a>
                 {/* Mobile Navigation */}
                 <MobileNav links={navLinks} logo={logoHeader} />
@@ -104,7 +103,7 @@ const App: React.FC = () => {
                     href="#/download"
                     className="bg-blue-600 text-white px-8 sm:px-10 py-4 rounded-2xl text-lg font-bold hover:bg-blue-700 transition-all flex items-center gap-2 shadow-xl shadow-blue-600/20"
                   >
-                    İndir
+                    Ücretsiz Dene
                     <ArrowRight className="w-5 h-5" aria-hidden="true" />
                   </a>
                   <button
@@ -141,7 +140,7 @@ const App: React.FC = () => {
           {/* Problem Section */}
           <section id="problems" aria-labelledby="problems-title" className="py-24 px-6 bg-slate-50">
             <div className="max-w-7xl mx-auto text-center mb-16">
-              <h2 id="problems-title" className="text-3xl md:text-4xl font-bold">Beyanname Dönemi <span className="text-red-500">Kabusu mu?</span></h2>
+              <h2 id="problems-title" className="text-3xl md:text-4xl font-bold">Beyanname Dönemi <span className="text-red-500">Kabus mu?</span></h2>
               <p className="mt-4 text-slate-500 max-w-2xl mx-auto">Mali müşavirlerin en büyük sorunlarını çözüyoruz.</p>
             </div>
 
@@ -209,7 +208,7 @@ const App: React.FC = () => {
                 href="#/download"
                 className="bg-blue-600 text-white px-8 py-4 rounded-2xl text-lg font-bold hover:bg-blue-700 transition-all flex items-center gap-2 shadow-lg shadow-blue-600/20"
               >
-                İndir
+                Ücretsiz Dene
                 <ArrowRight className="w-5 h-5" />
               </a>
             </div>
@@ -316,7 +315,7 @@ const App: React.FC = () => {
               href="#/download"
               className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition-all"
             >
-              İndir
+              Ücretsiz Dene
             </a>
           </div>
         </footer>

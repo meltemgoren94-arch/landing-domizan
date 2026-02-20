@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { Upload, Brain, FolderCheck, CheckCircle2 } from "lucide-react";
+import stepEvrakYukle from "@/assets/step-evrak-yukle.png";
+import stepAnalizTasnif from "@/assets/step-analiz-tasnif.png";
+import stepCanliAsistan from "@/assets/step-canli-asistan.png";
 
 interface TabContent {
     title: string;
     description: string;
     features: string[];
     icon: React.ReactNode;
+    image: string;
+    imageAlt: string;
 }
 
 // Son kullanıcı odaklı içerikler
@@ -19,7 +24,9 @@ const tabContents: TabContent[] = [
             "Birden fazla dosyayı aynı anda yükleyin",
             "Otomatik dosya algılama"
         ],
-        icon: <Upload className="w-8 h-8" />
+        icon: <Upload className="w-8 h-8" />,
+        image: stepEvrakYukle,
+        imageAlt: "Evrak Yükle - Dosyalar kuyruğa alındı"
     },
     {
         title: "Analiz ve Tasnif",
@@ -30,7 +37,9 @@ const tabContents: TabContent[] = [
             "Otomatik klasörleme ve arşivleme",
             "Hatalı eşleşmelerden öğrenen sistem"
         ],
-        icon: <FolderCheck className="w-8 h-8" />
+        icon: <FolderCheck className="w-8 h-8" />,
+        image: stepAnalizTasnif,
+        imageAlt: "Analiz ve Tasnif - Analiz ediliyor"
     },
     {
         title: "7/24 Canlı Asistan",
@@ -41,7 +50,9 @@ const tabContents: TabContent[] = [
             "Anlık raporlama ve belge sorgulama",
             "Mobil erişim özgürlüğü"
         ],
-        icon: <Brain className="w-8 h-8" />
+        icon: <Brain className="w-8 h-8" />,
+        image: stepCanliAsistan,
+        imageAlt: "7/24 Canlı Asistan - AI Asistan Özeti"
     }
 ];
 
@@ -97,24 +108,13 @@ export const StepTabs: React.FC = () => {
                         </ul>
                     </div>
 
-                    {/* Visual representation */}
-                    <div className="bg-slate-50 rounded-2xl p-8 flex items-center justify-center min-h-[280px]">
-                        <div className={`text-center ${activeTab === 0 ? "text-blue-500" :
-                            activeTab === 1 ? "text-purple-500" :
-                                "text-green-500"
-                            }`}>
-                            <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-current/10 flex items-center justify-center">
-                                {activeTab === 0 && <Upload className="w-12 h-12" />}
-                                {activeTab === 1 && <Brain className="w-12 h-12" />}
-                                {activeTab === 2 && <FolderCheck className="w-12 h-12" />}
-                            </div>
-                            <div className="text-lg font-bold text-slate-900">{currentTab.title}</div>
-                            <div className="text-sm text-slate-400 mt-1">
-                                {activeTab === 0 && "Dosyalar kuyruğa alındı"}
-                                {activeTab === 1 && "Analiz ediliyor..."}
-                                {activeTab === 2 && "Klasöre taşındı ✓"}
-                            </div>
-                        </div>
+                    {/* Visual representation - Product screenshots */}
+                    <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+                        <img
+                            src={currentTab.image}
+                            alt={currentTab.imageAlt}
+                            className="w-full h-auto object-cover"
+                        />
                     </div>
                 </div>
             </div>

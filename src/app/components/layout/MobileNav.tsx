@@ -120,7 +120,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ links, logo }) => {
                                     onClick={closeMenu}
                                     className="flex items-center justify-center gap-2 w-full bg-blue-600 text-white py-3.5 rounded-xl font-bold hover:bg-blue-700 active:scale-95 transition-all shadow-lg shadow-blue-600/20"
                                 >
-                                    Ücretsiz İndir
+                                    Ücretsiz Dene
                                     <ArrowRight className="w-4 h-4" />
                                 </a>
                             </motion.div>
