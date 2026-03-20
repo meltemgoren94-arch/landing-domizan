@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
-import { getLatestDesktopReleaseCatalog } from "./_lib/github-release";
+import { getLatestDesktopReleaseCatalog } from "../lib/server/github-release";
 
 const normalizeQueryValue = (value: string | string[] | undefined) => {
   if (Array.isArray(value)) {

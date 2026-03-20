@@ -184,7 +184,7 @@ const fetchLatestRelease = async () => {
   if (!response.ok) {
     const body = await response.text();
     throw new Error(
-      `GitHub release bilgisi alinamadi (${response.status}). ${body || "Bilinmeyen hata."}`
+      `GitHub release bilgisi alınamadı (${response.status}). ${body || "Bilinmeyen hata."}`
     );
   }
 
