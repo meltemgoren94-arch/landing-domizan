@@ -21,7 +21,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { name, email, phone } = req.body;
+    const { name, email, phone, platform, architecture, releaseVersion } = req.body;
 
     // Validation
     if (!name || !email || !phone) {
@@ -29,6 +29,25 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         error: "Lütfen tüm alanları doldurun (name, email, phone).",
       });
     }
+
+    const platformLabel =
+      platform === "mac"
+        ? "macOS"
+        : platform === "windows"
+          ? "Windows"
+          : null;
+
+    const architectureLabel =
+      architecture === "arm64"
+        ? "Apple Silicon"
+        : architecture === "x64"
+          ? "Intel / x64"
+          : null;
+
+    const releaseLabel =
+      typeof releaseVersion === "string" && releaseVersion.trim()
+        ? releaseVersion.trim()
+        : null;
 
     // Send notification email to you
     const { data, error } = await resend.emails.send({
@@ -64,6 +83,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                   <a href="tel:${phone}" style="color: #2563eb; text-decoration: none;">${phone}</a>
                 </td>
               </tr>
+              ${platformLabel
+                ? `
+              <tr><td colspan="2" style="height: 8px;"></td></tr>
+              <tr>
+                <td style="padding: 12px 16px; background: #f8fafc; border-radius: 8px; font-weight: 600; color: #475569; width: 140px; font-size: 14px;">💻 Platform</td>
+                <td style="padding: 12px 16px; background: #f8fafc; border-radius: 8px; color: #1e293b; font-size: 14px;">
+                  ${platformLabel}${architectureLabel ? ` / ${architectureLabel}` : ""}
+                </td>
+              </tr>`
+                : ""}
+              ${releaseLabel
+                ? `
+              <tr><td colspan="2" style="height: 8px;"></td></tr>
+              <tr>
+                <td style="padding: 12px 16px; background: #f8fafc; border-radius: 8px; font-weight: 600; color: #475569; width: 140px; font-size: 14px;">🏷️ Sürüm</td>
+                <td style="padding: 12px 16px; background: #f8fafc; border-radius: 8px; color: #1e293b; font-size: 14px;">v${releaseLabel}</td>
+              </tr>`
+                : ""}
             </table>
 
             <!-- Timestamp -->
